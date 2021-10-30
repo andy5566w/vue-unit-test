@@ -1,15 +1,27 @@
 <template>
-  <Timeline />
+  <section class="section">
+    <div class="container">
+      <suspense>
+        <template #default>
+          <!--  This component's setup function must be wrap by async/await        -->
+          <Timeline />
+        </template>
+        <template #fallback> <Spinner /> </template>
+      </suspense>
+    </div>
+  </section>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import Spinner from './components/Spinner.vue'
 import Timeline from './components/Timeline.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
     Timeline,
+    Spinner,
   },
 })
 </script>

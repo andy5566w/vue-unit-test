@@ -24,6 +24,7 @@ import { defineComponent, ref, computed } from 'vue'
 import moment from 'moment'
 import { today, thisMonth, thisWeek } from '@/mocks'
 import TimelinePost from './TimelinePost.vue'
+const wait = (second: number) => new Promise((res) => setTimeout(res, second))
 
 type Period = 'Today' | 'This Week' | 'This Month'
 export default defineComponent({
@@ -32,7 +33,8 @@ export default defineComponent({
     msg: String,
   },
   components: { TimelinePost },
-  setup() {
+  async setup() {
+    await wait(2000)
     const periods = ['Today', 'This Week', 'This Month']
     const currentPeriod = ref<Period>('Today')
     const posts = computed(() => {
