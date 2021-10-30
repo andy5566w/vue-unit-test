@@ -6,6 +6,7 @@
         :key="period"
         @click="setPeriod(period)"
         :class="{ 'is-active': currentPeriod === period }"
+        :data-test="period"
         >{{ period }}</a
       >
     </span>
