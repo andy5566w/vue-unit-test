@@ -10,10 +10,12 @@
         >{{ period }}</a
       >
     </span>
-    <a v-for="post in posts" :key="post.id" class="panel-block">
-      <a href="">{{ post.title }}</a>
-      <span>{{ post.created.format('Do MMMM') }}</span>
-    </a>
+    <TimelinePost
+      v-for="post in posts"
+      :key="post.id"
+      :post="post"
+      class="panel-block"
+    />
   </nav>
 </template>
 
@@ -21,6 +23,7 @@
 import { defineComponent, ref, computed } from 'vue'
 import moment from 'moment'
 import { today, thisMonth, thisWeek } from '@/mocks'
+import TimelinePost from './TimelinePost.vue'
 
 type Period = 'Today' | 'This Week' | 'This Month'
 export default defineComponent({
@@ -28,6 +31,7 @@ export default defineComponent({
   props: {
     msg: String,
   },
+  components: { TimelinePost },
   setup() {
     const periods = ['Today', 'This Week', 'This Month']
     const currentPeriod = ref<Period>('Today')
