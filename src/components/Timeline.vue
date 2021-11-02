@@ -22,7 +22,7 @@
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue'
 import moment from 'moment'
-import { today, thisMonth, thisWeek, Post } from '@/mocks'
+import { Post } from '@/mocks'
 import TimelinePost from './TimelinePost.vue'
 const wait = (second: number) => new Promise((res) => setTimeout(res, second))
 import { useStore } from '@/store'
@@ -39,6 +39,8 @@ export default defineComponent({
     const periods = ['Today', 'This Week', 'This Month']
     const currentPeriod = ref<Period>('Today')
     const store = useStore()
+    await store.fetchPosts()
+
     const allPosts: Post[] = store
       .getState()
       .posts.ids.reduce<Post[]>((acc, id) => {

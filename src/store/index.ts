@@ -25,7 +25,7 @@ class Store {
   }
 
   async fetchPosts() {
-    const response = await axios.get<Post[]>('/post')
+    const response = await axios.get<Post[]>('/posts')
     const postsState: PostsState = {
       ids: [],
       all: new Map(),
