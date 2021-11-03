@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import axios from 'axios'
+import { router } from '@/router/router'
+import 'highlight.js/styles/atom-one-dark.css'
 
 import { today, thisWeek, thisMonth } from '@/mocks'
 
@@ -13,4 +15,6 @@ axios.get = async (url: string) => {
   return Promise.resolve({ data: [today, thisWeek, thisMonth] })
 }
 
-createApp(App).mount('#app')
+const app = createApp(App)
+app.use(router)
+app.mount('#app')

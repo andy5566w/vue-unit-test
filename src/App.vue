@@ -1,28 +1,19 @@
 <template>
   <section class="section">
     <div class="container">
-      <suspense>
-        <template #default>
-          <!--  This component's setup function must be wrap by async/await        -->
-          <Timeline />
-        </template>
-        <template #fallback> <Spinner /> </template>
-      </suspense>
+      <Navbar />
+      <router-view />
     </div>
   </section>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import Spinner from './components/Spinner.vue'
-import Timeline from './components/Timeline.vue'
+import Navbar from './Navbar.vue'
 
 export default defineComponent({
   name: 'App',
-  components: {
-    Timeline,
-    Spinner,
-  },
+  components: { Navbar },
 })
 </script>
 
@@ -31,7 +22,6 @@ export default defineComponent({
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }

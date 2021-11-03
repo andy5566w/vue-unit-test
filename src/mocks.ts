@@ -22,3 +22,7 @@ export const thisMonth: Post = {
   title: 'This Month',
   created: moment().subtract(12, 'days'),
 }
+
+export function getTestData(): Post[] {
+  return [today, thisMonth, thisWeek]
+}
